@@ -7,7 +7,10 @@ class charPair
 public:
     char first;
     char second;
-    charPair() {}
+    charPair() {
+        first = ' ';
+        second = ' ';
+    }
     void setFirst(char a)
     {
         this->first = a;
@@ -62,8 +65,11 @@ int main()
     char player = 'B';
 
     charPair symbols;
+
+
     std::cout << "enter ther board size: " << endl;
     cin >> size;
+    drawBoard(size, symbols, 'B');
 
     while (row != 'q' && column != 'q')
     {
@@ -78,8 +84,6 @@ int main()
         drawBoard(size, symbols, player);
 
     }
-    
-    drawBoard(size, symbols, 'B');
 }
 
 // printing the top of the board because it is the only only part that's diffrent
