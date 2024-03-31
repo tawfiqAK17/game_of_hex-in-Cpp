@@ -1,4 +1,4 @@
-![image](logo.png)
+![image](readme/logo.png)
 
 this is a game of hex that you can play on your computer terminal.
 
