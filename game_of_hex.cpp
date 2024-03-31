@@ -10,11 +10,11 @@ public:
     charPair() {}
     void setFirst(char a)
     {
-        first = a;
+        this->first = a;
     }
     void setSecond(char a)
     {
-        second = a;
+        this->second = a;
     }
     friend ostream &operator<<(ostream &os, charPair const &pair);
 };
@@ -27,11 +27,11 @@ public:
     intPair() {}
     void setFirst(int a)
     {
-        first = a;
+        this->first = a;
     }
     void setSecond(int a)
     {
-        second = a;
+        this->second = a;
     }
     friend ostream &operator<<(ostream &os, intPair const &pair);
 };
@@ -57,12 +57,28 @@ intPair symbolPaireToIntPair(charPair symbolPair);
 int main()
 {
     int size;
+    char row;
+    char column;
+    char player = 'B';
+
     charPair symbols;
-    symbols.setFirst('3');
-    symbols.setSecond('9');
-    std::cout<<symbolPaireToIntPair(symbols)<<std::endl;
     std::cout << "enter ther board size: " << endl;
     cin >> size;
+
+    while (row != 'q' && column != 'q')
+    {
+        cout << "player: "<< player << endl;
+        cout << "row: "<< endl;
+        cin >> row;
+        cout << "column: "<< endl;
+        cin >> column;
+        symbols.setFirst(row);
+        symbols.setSecond(column);
+        std::cout<<symbols<<std::endl;
+        drawBoard(size, symbols, player);
+
+    }
+    
     drawBoard(size, symbols, 'B');
 }
 
@@ -93,7 +109,7 @@ void printFirstRow(int size, charPair pair, char player)
     std::cout << endl;
 
     for (int i = 0; i < size; i++)
-        if (int_pair.first == 0 && int_pair.second == i + 1 && i % 2 != 0)
+        if (int_pair.first == 0 && int_pair.second/2 == i  && int_pair.second % 2 == 0)
         {
             std::cout << "/" << player << "\\_";
         }
@@ -125,7 +141,7 @@ void drawBoard(int size, charPair pair, char player)
         for (int j = 0; j < size; j++)
         {
             // check if the current position matches the pair given by the player
-            if (int_pair.first == i && (int_pair.second/2) - 1 == j   &&  (int_pair.second + int_pair.first) % 2 == 0)
+            if (int_pair.first == i && (int)((int_pair.second - int_pair.first) / 2) - 1==  j - 1 &&  (int_pair.second + int_pair.first) % 2 == 0)
             {
                 std::cout << "\\_/" << player;
             }
