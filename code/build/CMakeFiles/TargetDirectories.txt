@@ -1,0 +1,3 @@
+/home/tawfiq/C++ projects/game of hex/code/build/CMakeFiles/game_of_hex.dir
+/home/tawfiq/C++ projects/game of hex/code/build/CMakeFiles/edit_cache.dir
+/home/tawfiq/C++ projects/game of hex/code/build/CMakeFiles/rebuild_cache.dir

@@ -1,56 +1,6 @@
-#include <iostream>
 #include <vector>
-using namespace std;
+#include "classes.h"
 
-class charPair
-{
-public:
-    char first;
-    char second;
-    charPair() {
-        first = ' ';
-        second = ' ';
-    }
-    void setFirst(char a)
-    {
-        this->first = a;
-    }
-    void setSecond(char a)
-    {
-        this->second = a;
-    }
-    friend ostream &operator<<(ostream &os, charPair const &pair);
-};
-
-class intPair
-{
-public:
-    int first;
-    int second;
-    intPair() {}
-    void setFirst(int a)
-    {
-        this->first = a;
-    }
-    void setSecond(int a)
-    {
-        this->second = a;
-    }
-    friend ostream &operator<<(ostream &os, intPair const &pair);
-};
-
-//overloading operator << for both classes
-ostream &operator<<(ostream &os, charPair const &pair)
-{
-    os << "(" << pair.first << ", " << pair.second << ")";
-    return os;
-}
-
-ostream &operator<<(ostream &os, intPair const &pair)
-{
-    os << "(" << pair.first << ", " << pair.second << ")";
-    return os;
-}
 void drawBoard(int size);
 
 void drawBoard(int size, charPair pair, char player);
@@ -64,24 +14,24 @@ int main()
     char column;
     char player = 'B';
 
-    charPair symbols;
+    charPair symbolsPair;
 
 
-    std::cout << "enter ther board size: " << endl;
-    cin >> size;
-    drawBoard(size, symbols, 'B');
+    std::cout << "enter ther board size: " << std::endl;
+    std::cin >> size;
+    drawBoard(size, symbolsPair, 'B');
 
     while (row != 'q' && column != 'q')
     {
-        cout << "player: "<< player << endl;
-        cout << "row: "<< endl;
-        cin >> row;
-        cout << "column: "<< endl;
-        cin >> column;
-        symbols.setFirst(row);
-        symbols.setSecond(column);
-        std::cout<<symbols<<std::endl;
-        drawBoard(size, symbols, player);
+        std::cout << "player: "<< player << std::endl;
+std::cout << "row: "<< std::endl;
+        std::cin >> row;
+        std::cout << "column: "<< std::endl;
+        std::cin >> column;
+        symbolsPair.setFirst(row);
+        symbolsPair.setSecond(column);
+        std::cout<<symbolsPair<<std::endl;
+        drawBoard(size, symbolsPair, player);
 
     }
 }
@@ -106,11 +56,11 @@ void printFirstRow(int size, charPair pair, char player)
             std::cout << " " << (char)(65 + i - 26 - 10);
         }
     }
-    std::cout << endl;
+    std::cout << std::endl;
     for (int i = 0; i < size; i++)
         std::cout << " _  ";
 
-    std::cout << endl;
+    std::cout << std::endl;
 
     for (int i = 0; i < size; i++)
         if (int_pair.first == 0 && int_pair.second/2 == i  && int_pair.second % 2 == 0)
@@ -124,7 +74,7 @@ void printFirstRow(int size, charPair pair, char player)
     for (int j = 0; j <= size * 2 - 1; j++)
         std::cout << " ";
     std::cout << " " << 0;
-    std::cout << endl;
+    std::cout << std::endl;
 }
 
 // drawing the board
@@ -177,7 +127,7 @@ void drawBoard(int size, charPair pair, char player)
             }
 
         spacesNum += 2;
-        std::cout << endl;
+        std::cout << std::endl;
     }
 }
 
