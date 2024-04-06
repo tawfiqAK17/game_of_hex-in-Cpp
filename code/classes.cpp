@@ -2,62 +2,70 @@
 
 
 //implementation of the charPair class
-charPair::charPair()
+CharPair::CharPair()
 {
     this->first = ' ';
     this->second = ' ';
 }
 
-void charPair::setFirst(char a)
+void CharPair::setFirst(char a)
 {
     this->first = a;
 }
 
-
-void charPair::setSecond(char a)
+void CharPair::setSecond(char a)
 {
     this->second = a;
 }
 
-std::ostream &operator<<(std::ostream &os, charPair const &pair)
+std::ostream &operator<<(std::ostream &os, CharPair const &pair)
 {
     os << "(" << pair.first << ", " << pair.second << ")";
     return os;
 }
 
 //implementation of intPair class
-intPair::intPair()
+IntPair::IntPair()
 {
     this->first = 0;
     this->second = 0;
 }
 
-void intPair::setFirst(int a)
+void IntPair::setFirst(int a)
 {
     this->first = a;
 }
 
-void intPair::setSecond(int b)
+void IntPair::setSecond(int b)
 {
     this->second = b;
 }
 
-std::ostream &operator<<(std::ostream &os, intPair const &pair)
+std::ostream &operator<<(std::ostream &os, IntPair const &pair)
 {
     os << "(" << pair.first << ", " << pair.second << ")";
     return os;
 }
 
 //implementation of move class
-move::move(intPair position, char player):position(position), player(player){}
+Move::Move(IntPair position, char player)
+{
+    this->position = position;
+    this->player = player;
+}
 
-intPair move::getPosition()
+
+IntPair Move::getPosition()
 {
     return this->position;
 }
 
-char move::getPlayer()
+char Move::getPlayer()
 {
     return this->player;
 }
 
+void Move::swapPos(char nextPlayer)
+{
+    this->player = nextPlayer;
+}

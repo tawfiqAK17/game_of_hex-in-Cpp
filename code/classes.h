@@ -1,42 +1,48 @@
 #pragma once
 #include <iostream>
+#include <vector>
 
-class charPair
+// a class that gana represents the input of the user
+class CharPair
 {
 public:
     char first;
     char second;
-    charPair();
+    CharPair();
     void setFirst(char a);
 
     void setSecond(char a);
 
-    friend std::ostream &operator<<(std::ostream &os, charPair const &pair);
+    friend std::ostream &operator<<(std::ostream &os, CharPair const &pair);
 };
 
-class intPair
+// a class that gana represents the input of the user as a pair of integers
+class IntPair
 {
 public:
     int first;
     int second;
-    intPair();
+    IntPair();
     void setFirst(int a);
     
     void setSecond(int a);
     
-    friend std::ostream &operator<<(std::ostream &os, intPair const &pair);
+    friend std::ostream &operator<<(std::ostream &os, IntPair const &pair);
 };
 
-class move
+// a move class to hold the information of a move an the player that made it
+class Move
 {
-private:
-    intPair position;
-    char player;
 public:
-    move(intPair position, char player);
-   
-    intPair getPosition();
+    IntPair position;
+    char player;
+    Move(IntPair position, char player);
+
+    IntPair getPosition();
 
     char getPlayer();
+
+    void swapPos(char nextPlayer);
+
 };
 
