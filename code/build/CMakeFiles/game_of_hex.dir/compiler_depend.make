@@ -194,6 +194,7 @@ CMakeFiles/game_of_hex.dir/game_of_hex.cpp.o: /home/tawfiq/C++\ projects/game\ o
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
+  /usr/include/c++/11/array \
   /usr/include/c++/11/backward/binders.h \
   /usr/include/c++/11/bits/alloc_traits.h \
   /usr/include/c++/11/bits/allocator.h \
@@ -238,6 +239,7 @@ CMakeFiles/game_of_hex.dir/game_of_hex.cpp.o: /home/tawfiq/C++\ projects/game\ o
   /usr/include/c++/11/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/11/bits/stl_iterator_base_types.h \
   /usr/include/c++/11/bits/stl_pair.h \
+  /usr/include/c++/11/bits/stl_relops.h \
   /usr/include/c++/11/bits/stl_uninitialized.h \
   /usr/include/c++/11/bits/stl_vector.h \
   /usr/include/c++/11/bits/streambuf.tcc \
@@ -277,6 +279,7 @@ CMakeFiles/game_of_hex.dir/game_of_hex.cpp.o: /home/tawfiq/C++\ projects/game\ o
   /usr/include/c++/11/system_error \
   /usr/include/c++/11/type_traits \
   /usr/include/c++/11/typeinfo \
+  /usr/include/c++/11/utility \
   /usr/include/c++/11/vector \
   /usr/include/ctype.h \
   /usr/include/endian.h \
@@ -377,6 +380,10 @@ CMakeFiles/game_of_hex.dir/game_of_hex.cpp.o: /home/tawfiq/C++\ projects/game\ o
   /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h
 
 
+/usr/include/c++/11/utility:
+
+/usr/include/c++/11/array:
+
 /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h:
 
 /usr/include/x86_64-linux-gnu/sys/single_threaded.h:
@@ -440,6 +447,8 @@ CMakeFiles/game_of_hex.dir/game_of_hex.cpp.o: /home/tawfiq/C++\ projects/game\ o
 /usr/include/c++/11/bits/range_access.h:
 
 /usr/include/c++/11/bits/stl_vector.h:
+
+/usr/include/c++/11/bits/stl_relops.h:
 
 /usr/include/c++/11/bits/stl_iterator_base_funcs.h:
 

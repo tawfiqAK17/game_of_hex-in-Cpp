@@ -30,19 +30,3 @@ public:
     friend std::ostream &operator<<(std::ostream &os, IntPair const &pair);
 };
 
-// a move class to hold the information of a move an the player that made it
-class Move
-{
-public:
-    IntPair position;
-    char player;
-    Move(IntPair position, char player);
-
-    IntPair getPosition();
-
-    char getPlayer();
-
-    void swapPos(char nextPlayer);
-
-};
-

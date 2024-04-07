@@ -1,6 +1,8 @@
 #include <vector>
+#include <array>
 #include "classes.h"
 #include "funs.h"
+
 
 int main()
 {
@@ -13,12 +15,17 @@ int main()
 
     CharPair symbolsPair;
 
-    // all moves that had players made
-    std::vector<Move> moves;
 
     std::cout << "enter ther board size: " << std::endl;
     std::cin >> size;
-    drawBoard(size, moves);
+    // the matrix representation of the board
+    char** board = new char*[size];
+    for (int i = 0; i < size; ++i) {
+        board[i] = new char[3 * size - 2];
+    }
+    //initialize the board to spaces
+    initializeMatrix(board, size);
+    drawBoard(size, board);
 
     // get the player that will start first
     std::cout << "who's ganna start first 'B' or 'W'?  ";
@@ -49,41 +56,40 @@ int main()
         symbolsPair.setSecond(column);
         std::cout << symbolsPair << std::endl;
 
-        // creat a new move instance
-        Move *move = new Move(symbolPaireToIntPair(symbolsPair), player);
+        // the int representation of the cordinates
+        IntPair intPair = symbolPaireToIntPair(symbolsPair);
 
         // check if the position is valid
-        if ((move->position.first + move->position.second) % 2 != 0 || move->position.first <= size || move->position.second < 3 * size - 2)
+        if ((intPair.first + intPair.second) % 2 != 0 || intPair.first >= size || intPair.second >= 3 * size - 2 || board[intPair.first][intPair.second] != ' ')
         {
             std::cout << "invalid position" << std::endl <<std::endl;
             continue;
         }
-        // if the position is valid, add it to the moves vector
-        moves.push_back(*move);
-        delete move;
+        // if the position is valid, add it to the board matrix
+        board[intPair.first][intPair.second] = player;
 
-        drawBoard(size, moves);
+        drawBoard(size, board);
 
 
         // check if the swap rule allready invoked (it invokes only once in the first move)
         if (!swapedBefore)
         {
-            // ask if the other player want to swap (a hex rule)
+            // ask if the other player want to swap
             char answer;
             std::cout << nextPlayer(player) << " do you want to swap 'y' or 'n' ?? ";
             std::cin >> answer;
 
             if (answer == 'y')
             {
-                //swap the position
-                moves[moves.size() - 1].swapPos(nextPlayer(player));
+                //swap the player at the position
+                board[intPair.first][intPair.second] = nextPlayer(player);
                 //change the player
                 player = nextPlayer(player);
             }
             //the swap rule is invoked
             swapedBefore = true;
             // draw the board
-            drawBoard(size, moves);
+            drawBoard(size, board);
         }
 
         // change the player
