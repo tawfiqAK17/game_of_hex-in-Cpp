@@ -46,26 +46,3 @@ std::ostream &operator<<(std::ostream &os, IntPair const &pair)
     os << "(" << pair.first << ", " << pair.second << ")";
     return os;
 }
-
-//implementation of move class
-Move::Move(IntPair position, char player)
-{
-    this->position = position;
-    this->player = player;
-}
-
-
-IntPair Move::getPosition()
-{
-    return this->position;
-}
-
-char Move::getPlayer()
-{
-    return this->player;
-}
-
-void Move::swapPos(char nextPlayer)
-{
-    this->player = nextPlayer;
-}

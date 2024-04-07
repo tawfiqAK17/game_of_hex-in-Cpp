@@ -1,8 +1,9 @@
 #pragma once
 #include "classes.h"
 
+
 // printing the top of the board because it is the only only part that's diffrent
-void printFirstRow(int size, std::vector<Move> moves)
+void printFirstRow(int size, char** board)
 {
     // print the symbol reference for each coloumn (1 2 3 . . . .  a b c . . . . A B C . . .)
     for (int i = 0; i < size * 3 - 2; i++)
@@ -28,19 +29,7 @@ void printFirstRow(int size, std::vector<Move> moves)
 
     for (int i = 0; i < size; i++)
     {
-        int move_printed = false;
-        // check if the current position matches an existing move position
-        for (int k = 0; k < moves.size(); k++)
-        {
-            if (moves[k].getPosition().first == 0 && moves[k].getPosition().second / 2 == i && moves[k].getPosition().second % 2 == 0)
-            {
-                std::cout << "/" << moves[k].getPlayer() << "\\_";
-                move_printed = true;
-                break;
-            }
-        }
-        if (!move_printed)
-            std::cout << "/ \\_";
+        std::cout << "/" << board[0][2 * i]<<"\\_";
     }
     for (int j = 0; j <= size * 2 - 1; j++)
         std::cout << " ";
@@ -49,16 +38,15 @@ void printFirstRow(int size, std::vector<Move> moves)
 }
 
 // drawing the board
-void drawBoard(int size, std::vector<Move> moves)
+void drawBoard(int size, char** board)
 {
 
-
     // draw first part
-    printFirstRow(size, moves);
+    printFirstRow(size, board);
 
     // draw the rest
     int spacesNum = 0;
-    for (int i = 1; i < size + 1; i++)
+    for (int i = 1; i < size ; i++)
     {
         for (int j = 0; j < spacesNum; j++)
             std::cout << " ";
@@ -66,17 +54,8 @@ void drawBoard(int size, std::vector<Move> moves)
         {
             int move_printed = false;
             // check if the current position matches an existing move position
-            for (int k = 0; k < moves.size(); k++)
-            {
-                if (moves[k].getPosition().first == i && (int)((moves[k].getPosition().second - moves[k].getPosition().first) / 2) - 1 == j - 1 && (moves[k].getPosition().second + moves[k].getPosition().first) % 2 == 0)
-                {
-                    std::cout << "\\_/" << moves[k].getPlayer();
-                    move_printed = true;
-                    break;
-                }
-            }
-            if (!move_printed)
-                std::cout << "\\_/ ";
+            
+                std::cout << "\\_/"<<board[i][i + 2 * j];
         }
         if (i < size)
             std::cout << "\\_";
@@ -102,6 +81,17 @@ void drawBoard(int size, std::vector<Move> moves)
         spacesNum += 2;
         std::cout << std::endl;
     }
+    for (int j = 0; j < spacesNum; j++)
+            std::cout << " ";
+        for (int j = 0; j < size; j++)
+        {
+            int move_printed = false;
+            // check if the current position matches an existing move position
+            
+                std::cout << "\\_/ ";
+        }
+        std::cout << std::endl;
+
 }
 
 // transfer the symbol reference pair to an int pair
@@ -136,3 +126,13 @@ char nextPlayer(char player)
 }
 
 
+
+void initializeMatrix(char** matrix, const int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < 3 * size - 2; j++)
+            matrix[i][j] = ' ';
+    }
+
+}
